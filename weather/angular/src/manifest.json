@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "weather",
+  "short_name": "weather",
+  "version": "1.0.0",
+  "description": "Generated with @larscom/ng-chrome-extension",
+  "permissions": [
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html?#/popup",
+    "default_title": "Angular Chrome Extension"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "contentPage.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "serviceWorker.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

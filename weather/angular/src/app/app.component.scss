@@ -1,0 +1,163 @@
+
+.container {
+  height: 500px;
+  width: 400px;
+  margin-top: 25px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.widget {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-item {
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  border-radius: 10%;
+  width: 250px;
+  height: 370px;
+
+}
+
+.addCity {
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.cityName {
+  margin-top: 3%;
+  font-size: 16px;
+}
+
+.icon {
+  transform: scale(135%);
+  margin-left: 30%;
+}
+
+.temp {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.min_max {
+  font-size: 20px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.case {
+  align-items: center;
+  text-align: center;
+}
+
+.triangle_down {
+  color: #00ff3c;
+  font-size: 12px;
+}
+
+.min__text {
+  color: #00ff3c;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.triangle_up {
+  font-size: 12px;
+  color: red;
+}
+
+.max__text {
+  font-size: 12px;
+  font-weight: 500;
+  color: red;
+}
+
+.min_max__temp {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/*for btn*/
+.display_none {
+  display: none;
+}
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  margin-top: 35%;
+  font-size: 75px;
+  font-weight: lighter;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  background-color: #3498db;
+  cursor: pointer;
+  padding: 0px 35px 18px;
+  text-align: center;
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  background-color: #ff4081;
+  rotate: 90deg;
+}
+.form-field{
+  margin-top: 15%;
+  height: 80px;
+  width: 80%;
+}
+
+.controlBtnCon {
+  margin-top: 5%;
+  margin-right: 2.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn {
+  margin-left: 1%;
+}
+
+/*Slider*/
+.slick-slider {
+  width: 100%;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.darkLight{
+  display: flex;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.lightM {
+  margin-right: 10px;
+  color: #ff7e00;
+}
+
+.darkM {
+  margin-left: 10px;
+}
+
