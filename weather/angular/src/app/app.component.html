@@ -22,6 +22,14 @@
               <div class="widget">
                 <div class="widget-item">
                   <div *ngIf="!widget.main.temp" class="addCity">Add city</div>
+                  <div *ngIf="widget.main.temp" class="control__btn">
+                    <div (click)="resetThisWidget(widget.id)">
+                      <mat-icon class="icon-edit">edit</mat-icon>
+                    </div>
+                    <div (click)="deleteThisWidget(widget.id)">
+                      <mat-icon class="icon-delete">clear</mat-icon>
+                    </div>
+                  </div>
                   <div class="button-container">
                     <div (click)="showInput(widget.id)" *ngIf="widget.flag && !widget.main.temp" class="btn">+</div>
                   </div>
@@ -69,14 +77,6 @@
               <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
           </div>
-        </div>
-        <div class="controlBtnCon">
-          <button #removeLastBtn (click)="removeLastWidget()" class="control-btn" color="warn" mat-raised-button>Remove
-            Last
-          </button>
-          <button #resetBtn (click)="resetLocalStorage()" class="control-btn" mat-raised-button>Reset
-          </button>
-          <button (click)="addWidget()" class="control-btn" color="primary" mat-raised-button>Add Widget</button>
         </div>
       </div>
     </mat-drawer-content>

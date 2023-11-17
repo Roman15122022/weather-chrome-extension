@@ -6,7 +6,6 @@ import {WIDGET_STORAGE_KEY, WidgetService} from "./widget.service";
 import {interval, Observable, startWith} from "rxjs";
 import {map, switchMap} from "rxjs/operators";
 import {SlickCarouselComponent} from 'ngx-slick-carousel';
-import {MatButton} from "@angular/material/button";
 import {SlideConfig} from "./slide-config";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -22,8 +21,6 @@ import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 export class AppComponent implements OnInit{
   weatherWidgets: WeatherWidget[] = Array.from({length: 2}, () => new WidgetUiMode({} as WeatherWidget));
   @ViewChild('slickModal', {static: true}) slickModal!: SlickCarouselComponent;
-  @ViewChild('removeLastBtn') removeLastBtn!: MatButton;
-  @ViewChild('resetBtn') resetBtn!: MatButton;
   @ViewChild('btnLeft') btnLeft!: ElementRef;
   @ViewChild('btnRight') btnRight!: ElementRef;
   @ViewChild('cityInput') cityInput!: ElementRef;
@@ -83,6 +80,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.fillingArray();
     this.filterCity();
+    this.checkOnOff();
     this.localStorage();
     this.runWatcher();
     this.updateWeather();
@@ -106,9 +104,6 @@ export class AppComponent implements OnInit{
       data => {
         this.widgetService.updateData(data, currentWidget);
         this.setLocalStorage();
-        setTimeout(() => {
-          this.resetBtn.color = 'accent';
-        });
       },
       (error: HttpErrorResponse) => {
         if (error.status === 404) {
@@ -146,34 +141,19 @@ export class AppComponent implements OnInit{
     this.storageService.setItem(WIDGET_STORAGE_KEY, this.weatherWidgets);
   }
 
-  resetLocalStorage() {
-    this.storageService.resetItem(WIDGET_STORAGE_KEY);
-    this.widgetService.resetWidget(this.weatherWidgets);
-    this.resetBtn.color = undefined;
+  resetThisWidget(id: number) {
+    this.widgetService.resetWidget(this.weatherWidgets, id);
   }
 
-  addWidget() {
-    this.widgetService.activeButtons(
-      this.slideConfig.slidesToShow,
-      this.weatherWidgets,
-      this.btnRight,
-      this.btnLeft,
-      this.removeLastBtn,
-    );
-  }
-
-  removeLastWidget() {
-    this.widgetService.disabledButtons(
-      this.slideConfig.slidesToShow,
-      this.weatherWidgets,
-      this.btnRight,
-      this.btnLeft,
-      this.removeLastBtn,
-    );
+  deleteThisWidget(id: number) {
+    this.widgetService.delete(this.weatherWidgets, id);
   }
 
   nextSlide() {
-    this.slickModal.slickNext();
+    this.widgetService.add(this.slideConfig.slidesToShow, this.weatherWidgets);
+   setTimeout(()=>{
+     this.slickModal.slickNext()
+   });
   }
 
   prevSlide() {

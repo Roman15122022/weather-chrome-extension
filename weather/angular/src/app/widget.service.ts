@@ -1,9 +1,8 @@
-import {Injectable, ElementRef} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {WidgetUiMode} from "./WidgetUiMode";
 import {WeatherWidget} from "./weatherwidget";
 import {map} from "rxjs/operators";
 import {WeatherService} from "./weather.service";
-import {MatButton} from "@angular/material/button";
 
 
 export const WIDGET_STORAGE_KEY = 'widgets';
@@ -35,9 +34,9 @@ export class WidgetService {
     });
   }
 
-  resetWidget(weatherWidgets: WeatherWidget[]) {
+  resetWidget(weatherWidgets: WeatherWidget[], id: number) {
     weatherWidgets.forEach((item) => {
-      if (item.weatherData != null) {
+      if (item.id === id) {
         Object.assign(item, {
           weatherData: null,
           name: '',
@@ -52,25 +51,19 @@ export class WidgetService {
     })
   }
 
-  disabledButtons(showWidget: number, weatherWidgets: WeatherWidget[], btnLeft: ElementRef, btnRight: ElementRef, removeLast: MatButton) {
-    if (weatherWidgets.length > showWidget) {
-      weatherWidgets.length -= 1;
-    }
-    if (weatherWidgets.length === showWidget) {
-      removeLast.color = undefined;
-      btnLeft.nativeElement.classList.add('display_none');
-      btnRight.nativeElement.classList.add('display_none');
+  delete(weatherWidgets: WeatherWidget[], id: number) {
+    if (weatherWidgets.length > 1) {
+      weatherWidgets.forEach((widget, index)=> {
+        if (widget.id === id) {
+        weatherWidgets.splice(index, 1);
+      }
+      })
     }
   }
 
-  activeButtons(showWidget: number, weatherWidgets: WeatherWidget[], btnLeft: ElementRef, btnRight: ElementRef, removeLast: MatButton) {
+  add(showWidget: number, weatherWidgets: WeatherWidget[]) {
     const newWidget = new WidgetUiMode({} as WeatherWidget);
     weatherWidgets.push(newWidget);
-    if (weatherWidgets.length > showWidget) {
-      removeLast.color = 'warn';
-      btnLeft.nativeElement.classList.remove('display_none');
-      btnRight.nativeElement.classList.remove('display_none');
-    }
   }
 
 }
