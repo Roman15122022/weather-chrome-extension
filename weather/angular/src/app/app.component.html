@@ -1,4 +1,4 @@
-<div #comp class="contain">
+<div #comp class="container">
   <mat-toolbar>
     <div class="darkLight">
       <mat-icon class="lightM">light_mode</mat-icon>
@@ -39,7 +39,7 @@
                              [formControl]="formsControl" [matAutocomplete]="auto" class="input"
                              matInput name="cityName" placeholder="Enter city name" type="text">
                       <mat-autocomplete #auto autoActiveFirstOption>
-                        <mat-option *ngFor="let city of filterOptions | async" [value]="city">{{city}}</mat-option>
+                        <mat-option *ngFor="let city of filterOptions$ | async" [value]="city">{{city}}</mat-option>
                       </mat-autocomplete>
                     </mat-form-field>
                     <button (click)="getWeather(widget.id)" class="inputBtn" color="accent" mat-raised-button

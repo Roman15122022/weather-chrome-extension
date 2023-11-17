@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "weather",
-  "short_name": "weather",
+  "name": "Weather",
+  "short_name": "Weather",
   "version": "1.0.0",
-  "description": "Generated with @larscom/ng-chrome-extension",
+  "description": "Weather widget",
   "permissions": [
     "tabs"
   ],
   "action": {
     "default_popup": "index.html?#/popup",
-    "default_title": "Angular Chrome Extension"
+    "default_title": "Weather extantion"
   },
   "content_scripts": [
     {

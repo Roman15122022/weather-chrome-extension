@@ -1,6 +1,5 @@
-
 .container {
-  height: 400px;
+  height: 450px;
   width: 400px;
 }
 
@@ -153,7 +152,7 @@
   transform: scale(150%);
 }
 
-.icon-edit:hover{
+.icon-edit:hover {
   color: #00ff3c;
   transform: scale(150%);
 }
@@ -174,8 +173,7 @@
 .darkLight {
   display: flex;
   font-size: 14px;
-  margin-right: 10px;
-  margin-bottom: 25px;
+  margin: 10px 10px 25px;
   justify-content: center;
   align-items: center;
 }
